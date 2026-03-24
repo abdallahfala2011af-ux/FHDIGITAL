@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FHDIGITAL | Websites & Social Media for Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c5a87a;
+      --dark: #1a1a1a;
+      --light: #fdfaf5;
+      --text: #333;
+      --text-light: #666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(197, 168, 122, 0.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    body.rtl nav {
+      flex-direction: row-reverse;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    body.rtl .nav-links {
+      flex-direction: row-reverse;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background-color: #b39566;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: #0a0a0a;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(30, 28, 25, 0.8) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 30%, rgba(25, 22, 18, 0.6) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 80%, rgba(20, 18, 15, 0.5) 0%, transparent 50%);
+    }
+
+    .wheat-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .wheat-spike {
+      position: absolute;
+      opacity: 0.6;
+    }
+
+    .wheat-spike svg {
+      filter: drop-shadow(0 0 8px rgba(197, 168, 122, 0.3));
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.85) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+
+    body.rtl .hero-content {
+      text-align: right;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 72px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      max-width: 600px;
+      font-size: 18px;
+    }
+
+    /* About Grid - single column, image removed */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 800px;
+    }
+
+    body.rtl .about-grid {
+      direction: rtl;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    body.rtl .feature-item {
+      flex-direction: row-reverse;
+    }
+
+    .feature-item:hover {
+      transform: translateX(10px);
+    }
+
+    body.rtl .feature-item:hover {
+      transform: translateX(-10px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--light);
+      border: 1px solid rgba(197, 168, 122, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .feature-text h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .feature-text p {
+      color: var(--text-light);
+      font-size: 15px;
+    }
+
+    /* Process Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .step-card {
+      padding: 40px;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(197, 168, 122, 0.1);
+      position: relative;
+    }
+
+    body.rtl .step-card {
+      text-align: right;
+    }
+
+    .step-number {
+      font-size: 64px;
+      font-weight: 800;
+      color: rgba(197, 168, 122, 0.1);
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      line-height: 1;
+    }
+
+    body.rtl .step-number {
+      right: auto;
+      left: 30px;
+    }
+
+    .step-icon {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    /* Audience Section */
+    .audience-section {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      color: #fff;
+      border-radius: 40px;
+      padding: 80px 60px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 80px;
+      align-items: center;
+      margin: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audience-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(197, 168, 122, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .audience-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 168, 122, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    body.rtl .audience-section {
+      direction: rtl;
+      grid-template-columns: 1fr;
+    }
+
+    .audience-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .audience-content h2 {
+      font-size: 42px;
+      margin-bottom: 24px;
+      max-width: 100%;
+    }
+
+    .audience-content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      margin-bottom: 40px;
+      max-width: 100%;
+      line-height: 1.8;
+    }
+
+    .audience-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .audience-item {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 168, 122, 0.2);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .audience-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(197, 168, 122, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .audience-item h3 {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .audience-item p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      background: var(--primary);
+      padding: 40px 0;
+      margin-top: -40px;
+      border-radius: 20px;
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .stat-item h4 {
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .stat-item p {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Client Cards */
+    .testimonial-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+      margin-bottom: 30px;
+    }
+
+    body.rtl .testimonial-card {
+      text-align: right;
+    }
+
+    .testimonial-text {
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    body.rtl .client-info {
+      flex-direction: row-reverse;
+    }
+
+    .client-avatar {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: var(--dark);
+      color: #fff;
+      padding: 80px;
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    body.rtl .contact-card {
+      text-align: right;
+    }
+
+    .contact-card h2 {
+      font-size: 48px;
+      margin-bottom: 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    body.rtl .contact-links {
+      flex-direction: row-reverse;
+    }
+
+    .contact-link {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+
+    body.rtl .contact-link {
+      flex-direction: row-reverse;
+    }
+
+    .contact-link:hover {
+      color: var(--primary);
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    body.rtl footer {
+      text-align: right;
+    }
+
+    @media (max-width: 992px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .audience-section { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .audience-section { padding: 40px 20px; gap: 40px; }
+      .audience-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">FHDIGITAL</a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#contact">Contact</a>
+          <button class="btn btn-outline" id="langToggle" style="padding: 8px 16px;">العربية</button>
+          <a href="#contact" class="btn btn-primary">Get your free preview</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="wheat-container">
+        <!-- Wheat spike 1 - bottom right -->
+        <div class="wheat-spike" style="bottom: 5%; right: 5%; transform: rotate(-15deg);">
+          <svg width="180" height="500" viewBox="0 0 180 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M90 500 L90 50" stroke="rgba(197,168,122,0.4)" stroke-width="2.5"/>
+            <ellipse cx="90" cy="60" rx="12" ry="28" fill="rgba(197,168,122,0.35)" transform="rotate(-20 90 60)"/>
+            <ellipse cx="90" cy="60" rx="12" ry="28" fill="rgba(197,168,122,0.35)" transform="rotate(20 90 60)"/>
+            <ellipse cx="90" cy="100" rx="11" ry="26" fill="rgba(197,168,122,0.3)" transform="rotate(-25 90 100)"/>
+            <ellipse cx="90" cy="100" rx="11" ry="26" fill="rgba(197,168,122,0.3)" transform="rotate(25 90 100)"/>
+            <ellipse cx="90" cy="140" rx="10" ry="24" fill="rgba(197,168,122,0.28)" transform="rotate(-22 90 140)"/>
+            <ellipse cx="90" cy="140" rx="10" ry="24" fill="rgba(197,168,122,0.28)" transform="rotate(22 90 140)"/>
+            <ellipse cx="90" cy="180" rx="10" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(-20 90 180)"/>
+            <ellipse cx="90" cy="180" rx="10" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(20 90 180)"/>
+            <ellipse cx="90" cy="220" rx="9" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(-18 90 220)"/>
+            <ellipse cx="90" cy="220" rx="9" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(18 90 220)"/>
+            <ellipse cx="90" cy="260" rx="8" ry="18" fill="rgba(197,168,122,0.2)" transform="rotate(-15 90 260)"/>
+            <ellipse cx="90" cy="260" rx="8" ry="18" fill="rgba(197,168,122,0.2)" transform="rotate(15 90 260)"/>
+            <circle cx="90" cy="45" r="3" fill="rgba(197,168,122,0.5)"/>
+            <circle cx="82" cy="55" r="2.5" fill="rgba(197,168,122,0.45)"/>
+            <circle cx="98" cy="55" r="2.5" fill="rgba(197,168,122,0.45)"/>
+            <circle cx="80" cy="75" r="2.5" fill="rgba(197,168,122,0.4)"/>
+            <circle cx="100" cy="75" r="2.5" fill="rgba(197,168,122,0.4)"/>
+          </svg>
+        </div>
+        <!-- Wheat spike 2 -->
+        <div class="wheat-spike" style="bottom: 2%; right: 12%; transform: rotate(-5deg);">
+          <svg width="160" height="460" viewBox="0 0 160 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M80 460 L80 40" stroke="rgba(197,168,122,0.35)" stroke-width="2"/>
+            <ellipse cx="80" cy="50" rx="11" ry="26" fill="rgba(197,168,122,0.3)" transform="rotate(-20 80 50)"/>
+            <ellipse cx="80" cy="50" rx="11" ry="26" fill="rgba(197,168,122,0.3)" transform="rotate(20 80 50)"/>
+            <ellipse cx="80" cy="90" rx="10" ry="24" fill="rgba(197,168,122,0.27)" transform="rotate(-23 80 90)"/>
+            <ellipse cx="80" cy="90" rx="10" ry="24" fill="rgba(197,168,122,0.27)" transform="rotate(23 80 90)"/>
+            <ellipse cx="80" cy="130" rx="9" ry="22" fill="rgba(197,168,122,0.24)" transform="rotate(-20 80 130)"/>
+            <ellipse cx="80" cy="130" rx="9" ry="22" fill="rgba(197,168,122,0.24)" transform="rotate(20 80 130)"/>
+            <ellipse cx="80" cy="170" rx="9" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(-18 80 170)"/>
+            <ellipse cx="80" cy="170" rx="9" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(18 80 170)"/>
+            <ellipse cx="80" cy="210" rx="8" ry="18" fill="rgba(197,168,122,0.2)" transform="rotate(-15 80 210)"/>
+            <ellipse cx="80" cy="210" rx="8" ry="18" fill="rgba(197,168,122,0.2)" transform="rotate(15 80 210)"/>
+            <circle cx="80" cy="35" r="3" fill="rgba(197,168,122,0.45)"/>
+            <circle cx="72" cy="48" r="2.5" fill="rgba(197,168,122,0.4)"/>
+            <circle cx="88" cy="48" r="2.5" fill="rgba(197,168,122,0.4)"/>
+          </svg>
+        </div>
+        <!-- Wheat spike 3 -->
+        <div class="wheat-spike" style="bottom: 0%; right: 20%; transform: rotate(8deg);">
+          <svg width="140" height="420" viewBox="0 0 140 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70 420 L70 35" stroke="rgba(197,168,122,0.3)" stroke-width="2"/>
+            <ellipse cx="70" cy="45" rx="10" ry="24" fill="rgba(197,168,122,0.28)" transform="rotate(-18 70 45)"/>
+            <ellipse cx="70" cy="45" rx="10" ry="24" fill="rgba(197,168,122,0.28)" transform="rotate(18 70 45)"/>
+            <ellipse cx="70" cy="85" rx="9" ry="22" fill="rgba(197,168,122,0.24)" transform="rotate(-22 70 85)"/>
+            <ellipse cx="70" cy="85" rx="9" ry="22" fill="rgba(197,168,122,0.24)" transform="rotate(22 70 85)"/>
+            <ellipse cx="70" cy="125" rx="8" ry="20" fill="rgba(197,168,122,0.2)" transform="rotate(-18 70 125)"/>
+            <ellipse cx="70" cy="125" rx="8" ry="20" fill="rgba(197,168,122,0.2)" transform="rotate(18 70 125)"/>
+            <ellipse cx="70" cy="165" rx="8" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(-15 70 165)"/>
+            <ellipse cx="70" cy="165" rx="8" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(15 70 165)"/>
+            <circle cx="70" cy="30" r="2.5" fill="rgba(197,168,122,0.4)"/>
+          </svg>
+        </div>
+        <!-- Wheat spike 4 - top left -->
+        <div class="wheat-spike" style="top: 8%; left: 3%; transform: rotate(170deg); opacity: 0.4;">
+          <svg width="140" height="380" viewBox="0 0 140 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70 380 L70 30" stroke="rgba(197,168,122,0.35)" stroke-width="2"/>
+            <ellipse cx="70" cy="40" rx="10" ry="24" fill="rgba(197,168,122,0.3)" transform="rotate(-20 70 40)"/>
+            <ellipse cx="70" cy="40" rx="10" ry="24" fill="rgba(197,168,122,0.3)" transform="rotate(20 70 40)"/>
+            <ellipse cx="70" cy="80" rx="9" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(-22 70 80)"/>
+            <ellipse cx="70" cy="80" rx="9" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(22 70 80)"/>
+            <ellipse cx="70" cy="120" rx="8" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(-18 70 120)"/>
+            <ellipse cx="70" cy="120" rx="8" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(18 70 120)"/>
+            <ellipse cx="70" cy="160" rx="7" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(-15 70 160)"/>
+            <ellipse cx="70" cy="160" rx="7" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(15 70 160)"/>
+            <circle cx="70" cy="25" r="2.5" fill="rgba(197,168,122,0.4)"/>
+          </svg>
+        </div>
+        <!-- Wheat spike 5 - left -->
+        <div class="wheat-spike" style="top: 15%; left: 8%; transform: rotate(165deg); opacity: 0.35;">
+          <svg width="120" height="350" viewBox="0 0 120 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 350 L60 25" stroke="rgba(197,168,122,0.3)" stroke-width="2"/>
+            <ellipse cx="60" cy="35" rx="9" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(-20 60 35)"/>
+            <ellipse cx="60" cy="35" rx="9" ry="22" fill="rgba(197,168,122,0.25)" transform="rotate(20 60 35)"/>
+            <ellipse cx="60" cy="75" rx="8" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(-22 60 75)"/>
+            <ellipse cx="60" cy="75" rx="8" ry="20" fill="rgba(197,168,122,0.22)" transform="rotate(22 60 75)"/>
+            <ellipse cx="60" cy="115" rx="7" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(-18 60 115)"/>
+            <ellipse cx="60" cy="115" rx="7" ry="18" fill="rgba(197,168,122,0.18)" transform="rotate(18 60 115)"/>
+            <circle cx="60" cy="20" r="2" fill="rgba(197,168,122,0.35)"/>
+          </svg>
+        </div>
+        <!-- Golden particles -->
+        <div style="position:absolute; top:20%; right:25%; width:4px; height:4px; background:rgba(197,168,122,0.3); border-radius:50%;"></div>
+        <div style="position:absolute; top:35%; right:30%; width:3px; height:3px; background:rgba(197,168,122,0.25); border-radius:50%;"></div>
+        <div style="position:absolute; top:50%; right:15%; width:5px; height:5px; background:rgba(197,168,122,0.2); border-radius:50%;"></div>
+        <div style="position:absolute; top:65%; left:25%; width:3px; height:3px; background:rgba(197,168,122,0.2); border-radius:50%;"></div>
+        <div style="position:absolute; top:40%; left:15%; width:4px; height:4px; background:rgba(197,168,122,0.15); border-radius:50%;"></div>
+        <div style="position:absolute; top:75%; right:35%; width:3px; height:3px; background:rgba(197,168,122,0.2); border-radius:50%;"></div>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">FHDIGITAL</div>
+        <h1 data-en="FHDIGITAL Where Businesses Become Unforgettable." data-ar="FHDIGITAL حيث تصبح الأعمال لا تُنسى.">FHDIGITAL Where Businesses Become Unforgettable.</h1>
+        <p data-en="With Us Boosting Your Sales Is Not Optional — It Is Guaranteed!" data-ar="معنا، تعزيز مبيعاتك ليس خياراً - إنه مضمون!">With Us Boosting Your Sales Is Not Optional — It Is Guaranteed!</p>
+        <div style="display: flex; gap: 16px;">
+          <a href="#contact" class="btn btn-primary" data-en="Get your free preview →" data-ar="احصل على معاينة مجانية →">Get your free preview →</a>
+        </div>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; z-index: 3; color: #fff;">
+      <span data-en="Scroll" data-ar="مرر">Scroll</span> <br> <span style="display: block; text-align: center; font-size: 20px;">↓</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag" data-en="What We Do" data-ar="ماذا نفعل">What We Do</span>
+          <div class="section-header">
+            <h2 data-en="We understand hospitality" data-ar="نحن نفهم الضيافة">We understand hospitality</h2>
+            <p data-en="We're not generic web designers. We create beautiful websites and promote your business using real videos on our powerful social media channel." data-ar="نحن لسنا مصممي ويب عاديين. نحن ننشئ مواقع ويب جميلة ونروج لعملك باستخدام مقاطع فيديو حقيقية على قناة وسائل التواصل الاجتماعي القوية لدينا.">We're not generic web designers. We create beautiful websites and promote your business using real videos on our powerful social media channel.</p>
+          </div>
+          
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="feature-text">
+                <h3 data-en="Beautiful Websites" data-ar="مواقع ويب جميلة">Beautiful Websites</h3>
+                <p data-en="Fast, mobile-friendly websites designed to convert visitors into customers." data-ar="مواقع ويب سريعة وصديقة للهاتف المحمول مصممة لتحويل الزوار إلى عملاء.">Fast, mobile-friendly websites designed to convert visitors into customers.</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              </div>
+              <div class="feature-text">
+                <h3 data-en="Video Promotion" data-ar="ترويج الفيديو">Video Promotion</h3>
+                <p data-en="You send us videos — we post them to our 10K+ Instagram followers to drive traffic to your business." data-ar="أنت ترسل لنا مقاطع فيديو - نحن ننشرها لمتابعينا على Instagram أكثر من 10 آلاف لجذب حركة المرور إلى عملك.">You send us videos — we post them to our 10K+ Instagram followers to drive traffic to your business.</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div class="feature-text">
+                <h3 data-en="Real Growth" data-ar="النمو الحقيقي">Real Growth</h3>
+                <p data-en="Trackable results — more visits, more calls, more customers." data-ar="نتائج قابلة للتتبع - المزيد من الزيارات والمزيد من المكالمات والمزيد من العملاء.">Trackable results — more visits, more calls, more customers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" style="background: #f8f3eb;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag" data-en="The Process" data-ar="العملية">The Process</span>
+        <h2 data-en="How it works" data-ar="كيف يعمل">How it works</h2>
+        <p style="margin: 0 auto;" data-en="Simple, fast, and effective — designed for busy owners." data-ar="بسيط وسريع وفعال - مصمم لأصحاب الأعمال المشغولين.">Simple, fast, and effective — designed for busy owners.</p>
+      </div>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">🎬</div>
+          <h3 data-en="Send Us Your Videos" data-ar="أرسل لنا مقاطع الفيديو الخاصة بك">Send Us Your Videos</h3>
+          <p data-en="Record short videos of your food, drinks, atmosphere — anything that makes your place special." data-ar="سجل مقاطع فيديو قصيرة لطعامك ومشروباتك والأجواء - أي شيء يجعل مكانك مميزاً.">Record short videos of your food, drinks, atmosphere — anything that makes your place special.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">🚀</div>
+          <h3 data-en="We Build & Promote" data-ar="نحن نبني ونروج">We Build & Promote</h3>
+          <p data-en="We create your stunning website and post your videos to our Instagram with 10,000+ engaged followers." data-ar="ننشئ موقع الويب الرائع الخاص بك وننشر مقاطع الفيديو الخاصة بك على Instagram مع أكثر من 10000 متابع متفاعل.">We create your stunning website and post your videos to our Instagram with 10,000+ engaged followers.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">📈</div>
+          <h3 data-en="Watch Customers Grow" data-ar="شاهد العملاء ينمون">Watch Customers Grow</h3>
+          <p data-en="Sit back and watch as more people discover your business and visit your website or walk through your door." data-ar="استرخ وشاهد المزيد من الناس يكتشفون عملك ويزورون موقع الويب الخاص بك أو يدخلون من خلال الباب.">Sit back and watch as more people discover your business and visit your website or walk through your door.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <p style="font-weight: 700; color: var(--dark);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align: middle; margin-right: 8px; color: var(--primary);"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-en="Crafted with precision. Built to convert." data-ar="مصنوع بدقة. مبني للتحويل.">Crafted with precision. Built to convert.</span>
+        </p>
+        <p style="color: var(--text-light); font-size: 14px; margin-top: 8px;" data-en="Every website we build is designed to turn visitors into loyal customers." data-ar="كل موقع ويب نبنيه مصمم لتحويل الزوار إلى عملاء مخلصين.">Every website we build is designed to turn visitors into loyal customers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="audience-section">
+      <div class="audience-content">
+        <h2 data-en="Your videos, our audience." data-ar="مقاطع الفيديو الخاصة بك، جمهورنا.">Your videos, our audience.</h2>
+        <p data-en="We post your business's videos directly to our Instagram account with over 10,000 engaged followers. Your content reaches people who are actively looking for their next experience." data-ar="ننشر مقاطع فيديو عملك مباشرة على حسابنا على Instagram مع أكثر من 10000 متابع متفاعل. يصل محتواك إلى الأشخاص الذين يبحثون بنشاط عن تجربتهم التالية.">We post your business's videos directly to our Instagram account with over 10,000 engaged followers. Your content reaches people who are actively looking for their next experience.</p>
+        
+        <div class="audience-list">
+          <div class="audience-item">
+            <h3 data-en="10K+ Instagram Followers" data-ar="10000+ متابع على Instagram">10K+ Instagram Followers</h3>
+            <p data-en="Your videos reach an engaged audience already interested in discovering new businesses." data-ar="تصل مقاطع الفيديو الخاصة بك إلى جمهور متفاعل مهتم بالفعل باكتشاف أعمال جديدة.">Your videos reach an engaged audience already interested in discovering new businesses.</p>
+          </div>
+          <div class="audience-item">
+            <h3 data-en="Targeted Local Audience" data-ar="جمهور محلي مستهدف">Targeted Local Audience</h3>
+            <p data-en="We focus on reaching people in your area who are most likely to become your next customers." data-ar="نركز على الوصول إلى الأشخاص في منطقتك الذين من المرجح أن يصبحوا عملاءك التاليين.">We focus on reaching people in your area who are most likely to become your next customers.</p>
+          </div>
+          <div class="audience-item">
+            <h3 data-en="Consistent Posting Schedule" data-ar="جدول نشر متسق">Consistent Posting Schedule</h3>
+            <p data-en="Regular, high-quality posts keep your business visible and growing week after week." data-ar="المنشورات المنتظمة والعالية الجودة تحافظ على ظهور عملك والنمو أسبوعاً تلو الآخر.">Regular, high-quality posts keep your business visible and growing week after week.</p>
+          </div>
+          <div class="audience-item">
+            <h3 data-en="Engagement Tracking & Reporting" data-ar="تتبع الانخراط والإبلاغ">Engagement Tracking & Reporting</h3>
+            <p data-en="See exactly how your content is performing — views, reach, and new customer inquiries." data-ar="شاهد بالضبط كيف يؤدي محتواك - الآراء والوصول والاستفسارات من العملاء الجدد.">See exactly how your content is performing — views, reach, and new customer inquiries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <h4>10K+</h4>
+          <p data-en="Instagram followers" data-ar="متابعو Instagram">Instagram followers</p>
+        </div>
+        <div class="stat-item">
+          <h4>49%</h4>
+          <p data-en="Clients see growth in first month" data-ar="العملاء يرون النمو في الشهر الأول">Clients see growth in first month</p>
+        </div>
+        <div class="stat-item">
+          <h4>24/7</h4>
+          <p data-en="Support for all clients" data-ar="الدعم لجميع العملاء">Support for all clients</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="section-tag" data-en="What our clients say" data-ar="ما يقوله عملاؤنا">What our clients say</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="testimonial-card">
+          <p class="testimonial-text" data-en="After posting just one video on their page, we had 30 new customers in one week. The website looks amazing too!" data-ar="بعد نشر مقطع فيديو واحد فقط على صفحتهم، حصلنا على 30 عميل جديد في أسبوع واحد. موقع الويب يبدو رائعاً أيضاً!">After posting just one video on their page, we had 30 new customers in one week. The website looks amazing too!</p>
+          <div class="client-info">
+            <div class="client-avatar">KM</div>
+            <div>
+              <p style="font-weight: 700;">Khalid Al-Mansour</p>
+              <p style="font-size: 13px; color: var(--text-light);">Owner, Al-S*** Cafe</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text" data-en="I recorded a 30-second video on my phone. They did the rest. Our Instagram DMs blew up with reservation requests." data-ar="سجلت مقطع فيديو لمدة 30 ثانية على هاتفي. فعلوا الباقي. انفجرت رسائل Instagram المباشرة الخاصة بنا برسائل طلبات الحجز.">I recorded a 30-second video on my phone. They did the rest. Our Instagram DMs blew up with reservation requests.</p>
+          <div class="client-info">
+            <div class="client-avatar">ER</div>
+            <div>
+              <p style="font-weight: 700;">Elena Rossi</p>
+              <p style="font-size: 13px; color: var(--text-light);">Owner, The I*** B***</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text" data-en="Zero stress. They built our site, posted our videos, and we saw results immediately. Highly recommend." data-ar="بدون إجهاد. بنوا موقعنا ونشروا مقاطع الفيديو الخاصة بنا ورأينا النتائج على الفور. أوصي بشدة.">Zero stress. They built our site, posted our videos, and we saw results immediately. Highly recommend.</p>
+          <div class="client-info">
+            <div class="client-avatar">AA</div>
+            <div>
+              <p style="font-weight: 700;">Ali Ahmed</p>
+              <p style="font-size: 13px; color: var(--text-light);">Owner, H*** Grill</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-bottom: 50px;">
+    <div class="container">
+      <div class="contact-card">
+        <span class="section-tag" style="color: var(--primary);" data-en="Get Started" data-ar="ابدأ">Get Started</span>
+        <h2 data-en="Ready to grow your business?" data-ar="هل أنت مستعد لتنمية عملك؟">Ready to grow your business?</h2>
+        <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 40px;" data-en="Contact us on Instagram or send us an email with your ideas and descriptions for how you want your website to look, and tell us how we can help you achieve your goals." data-ar="تواصل معنا على Instagram أو أرسل لنا بريداً إلكترونياً يتضمن أفكارك وأوصافاً لكيفية رغبتك في ظهور موقع الويب الخاص بك، وأخبرنا كيف يمكننا مساعدتك في تحقيق أهدافك.">Contact us on Instagram or send us an email with your ideas and descriptions for how you want your website to look, and tell us how we can help you achieve your goals.</p>
+        
+        <div class="contact-links">
+          <a href="https://instagram.com/fh._digital" target="_blank" class="contact-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span data-en="Instagram: @fh._digital" data-ar="Instagram: @fh._digital">Instagram: @fh._digital</span>
+          </a>
+          <a href="mailto:FHDIGITAL4EVERYONE@gmail.com" class="contact-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-en="Email: FHDIGITAL4EVERYONE@gmail.com" data-ar="البريد الإلكتروني: FHDIGITAL4EVERYONE@gmail.com">Email: FHDIGITAL4EVERYONE@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 FHDIGITAL. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+      <div style="margin-top: 10px; display: flex; justify-content: center; gap: 20px;">
+        <a href="https://instagram.com/fh._digital" target="_blank" style="color: inherit; text-decoration: none;" data-en="Instagram" data-ar="Instagram">Instagram</a>
+        <a href="mailto:FHDIGITAL4EVERYONE@gmail.com" style="color: inherit; text-decoration: none;" data-en="Email" data-ar="البريد الإلكتروني">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const langToggle = document.getElementById('langToggle');
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
+    let isArabic = false;
+
+    langToggle.addEventListener('click', function() {
+      isArabic = !isArabic;
+      if (isArabic) {
+        htmlElement.lang = 'ar';
+        bodyElement.classList.add('rtl');
+        langToggle.textContent = 'English';
+        document.querySelectorAll('[data-ar]').forEach(element => {
+          element.textContent = element.getAttribute('data-ar');
+        });
+      } else {
+        htmlElement.lang = 'en';
+        bodyElement.classList.remove('rtl');
+        langToggle.textContent = 'العربية';
+        document.querySelectorAll('[data-en]').forEach(element => {
+          element.textContent = element.getAttribute('data-en');
+        });
+      }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
